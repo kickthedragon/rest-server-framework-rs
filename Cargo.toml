@@ -1,0 +1,48 @@
+[package]
+name = "rest-server-framework-rs"
+version = "0.1.0"
+authors = ["Eric Remigino <eric.remigino@gmail.com>"]
+
+[dependencies]
+iron = "^0.4"
+router = "^0.2"
+mount = "^0.2"
+staticfile = "^0.3"
+lazy_static = "^0.2"
+toml = "^0.2"
+redis = "^0.7"
+rustc-serialize = "^0.3"
+rand = "^0.3"
+chrono = "^0.2"
+byteorder = "^0.5"
+lettre = "^0.6"
+rust-crypto = "^0.2"
+otpauth = "^0.2"
+qrcode = "^0.2"
+image = "^0.10"
+data-encoding = "^1.1"
+rest-api-data-types = {git = "https://github.com/kickthedragon/rest-api-data-types"}
+rest-api-data-utils = {git = "https://github.com/kickthedragon/rest-api-data-utils"}
+
+[features]
+default = ["ssl"]
+ssl = ["iron/ssl"]
+
+# The release profile, used for `cargo build`.
+[profile.dev]
+opt-level = 0
+debug = true
+rpath = false
+lto = false
+debug-assertions = true
+codegen-units = 1
+panic = 'unwind'
+
+# The release profile, used for `cargo build --release`.
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+panic = 'unwind'
